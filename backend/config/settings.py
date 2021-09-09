@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.posts',
+    'apps.categories',
+    'apps.places',
     'cloudinary',
     'django_filters',
 ]
@@ -87,24 +89,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # Heroku Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd62p88djiflh8r',
-        'USER': 'fydfukbplcsdwn',
-        'PORT': 5432,
-        'HOST': 'ec2-44-197-40-76.compute-1.amazonaws.com',
-        'PASSWORD': 'c289eb1ae3c1910512318a282ca293c7a92decdf2a8d22551b36fc8084b51c0d',
-    }
-}
-
-# Local Database
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd62p88djiflh8r',
+#         'USER': 'fydfukbplcsdwn',
+#         'PORT': 5432,
+#         'HOST': 'ec2-44-197-40-76.compute-1.amazonaws.com',
+#         'PASSWORD': 'c289eb1ae3c1910512318a282ca293c7a92decdf2a8d22551b36fc8084b51c0d',
 #     }
 # }
+
+# Local Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Heroku PostgreSQL Database
 django_heroku.settings(locals())
