@@ -6,6 +6,11 @@ from apps.categories.models import Category
 
 
 class Place(models.Model):
+    MY_CHOICES = (
+        ('a', 'Private and Luxury'),
+        ('b', 'Full-day Tours'),
+        ('c', 'Day trips'),
+    )
     class Meta(object):
         db_table = 'place'
 
@@ -22,7 +27,7 @@ class Place(models.Model):
         Category, on_delete=models.CASCADE
     )
     place_type = models.CharField(
-        'Place Type', max_length=50, null=False, blank=False
+        'Place Type', max_length=50, null=False, blank=False, choices=MY_CHOICES
     )
     time_to_travel = models.CharField(
         'Time To Travel', max_length=50, null=False, blank=False
