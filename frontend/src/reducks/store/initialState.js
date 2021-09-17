@@ -1,7 +1,13 @@
-const initialState = { 
-    posts: {
-        list: []
-    }
+const initialState = {
+  posts: {
+    list: [],
+  },
+  places: {
+    list: [],
+  },
+  categories: {
+    list: [],
+  },
 };
 
-export default initialState
+export default initialState;

@@ -1,37 +1,61 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../assets/img/loading.gif";
-import PostForm from "../components/Posts/PostForm";
-import Post from "../components/Posts/Post";
-import { fetchPosts } from "../reducks/posts/operations";
-import { getPosts } from "../reducks/posts/selectors";
+import { fetchPlaces } from "../reducks/places/operations";
+import { getPlaces } from "../reducks/places/selectors";
+import Header from "../components/Posts/Common/Header";
+import Footer from "../components/Posts/Common/Footer";
+import Search from "../components/Posts/Common/Search";
+import Background from "../assets/img/background.png";
+import CategoryCard from "../components/Posts/Common/CategoryCard";
+import PlaceCard from "../components/Posts/Common/PlaceCard";
+import { getCategories } from "../reducks/categories/selectors";
+import { fetchCategories } from "../reducks/categories/operations";
 
 const Home = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  const posts = getPosts(selector);
+  const places = getPlaces(selector);
+  console.log(places);
+  useEffect(() => {
+    dispatch(fetchPlaces());
+  }, []);
+  const categories = getCategories(selector);
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchCategories());
   }, []);
 
   return (
-    <section class="content">
-      <PostForm />
-      <section class="posts">
-        {posts.length > 0 ? (
-          <ul>
-            {posts.map((post) => (
-              <Post key={post.id} post={post} />
+    <>
+      <Header />
+      <div class="home">
+        <div class="background-image">
+          <img src={Background} alt="" />
+        </div>
+
+        <Search />
+
+        <section class="section1">
+          <div class="heading1">Popular things to do in Ethiopia</div>
+          <div class="grid">
+            {categories.map((caterory) => (
+              <CategoryCard category={caterory} />
             ))}
-          </ul>
-        ) : (
-          <div class="loading">
-            <img src={Loading} class="" />
           </div>
-        )}
-      </section>
-    </section>
+          <div class="heading1">Tourist Attraction in Ethiopia</div>
+        </section>
+        <section class="section2">
+          <div class="galary">
+            <div class="row">
+              {places.map((place) => (
+                <PlaceCard place={place} />
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+      <Footer />
+    </>
   );
 };
 
