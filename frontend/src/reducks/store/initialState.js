@@ -8,6 +8,9 @@ const initialState = {
   categories: {
     list: [],
   },
+  favourites: {
+    list: [],
+  },
 };
 
 export default initialState;

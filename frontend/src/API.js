@@ -20,12 +20,18 @@ const api = axios.create({
 export default class API {
   getPlaces = async (search, category) => {
     let url = "/places/";
+    let query = new URLSearchParams();
     if (search) {
-      url += "?search=" + search;
+      query.append("search", search);
     }
     if (category) {
-      url += "?category=" + category;
+      query.append("category", category);
     }
+
+    if (query.toString() != "") {
+      url += "?" + query.toString();
+    }
+
     const places = await api
       .get(url)
       .then((response) => {

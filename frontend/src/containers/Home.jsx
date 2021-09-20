@@ -10,6 +10,7 @@ import CategoryCard from "../components/Posts/Common/CategoryCard";
 import PlaceCard from "../components/Posts/Common/PlaceCard";
 import { getCategories } from "../reducks/categories/selectors";
 import { fetchCategories } from "../reducks/categories/operations";
+import { fetchFromLocalStorage } from "../reducks/favourites/operations";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    dispatch(fetchFromLocalStorage());
   }, []);
 
   return (

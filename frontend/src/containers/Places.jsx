@@ -7,17 +7,19 @@ import Card from "../components/Posts/Common/Card";
 import queryString from "query-string";
 import { fetchPlaces } from "../reducks/places/operations";
 import { getPlaces } from "../reducks/places/selectors";
+import { fetchFromLocalStorage } from "../reducks/favourites/operations";
 
 const Places = () => {
   const parsed = queryString.parse(window.location.search);
-  const [search, setSearch] = useState(1);
+  const [search, setSearch] = useState(null);
   const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const places = getPlaces(selector);
-  parsed.category = 1;
   console.log(places);
   useEffect(() => {
+    dispatch(fetchFromLocalStorage());
+
     if (parsed.search != undefined) {
       setSearch(parsed.search);
     }
@@ -27,7 +29,9 @@ const Places = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchPlaces(search, category));
+    if (search != null || category != null) {
+      dispatch(fetchPlaces(search, category));
+    }
   }, [search, category]);
 
   return (

@@ -106,6 +106,9 @@ Home
   display: flex;
   justify-content: space-evenly;
 }
+.home .section1 .gridcontent {
+  cursor: pointer;
+}
 .home .section1 .gridcontent img {
   height: 90px;
 }

@@ -7,9 +7,9 @@ from apps.categories.models import Category
 
 class Place(models.Model):
     MY_CHOICES = (
-        ('a', 'Private and Luxury'),
-        ('b', 'Full-day Tours'),
-        ('c', 'Day trips'),
+        ('Private and Luxury', 'Private and Luxury'),
+        ('Full-day Tours', 'Full-day Tours'),
+        ('Day trips', 'Day trips'),
     )
     class Meta(object):
         db_table = 'place'
