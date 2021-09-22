@@ -141,6 +141,7 @@ Home
   position: absolute;
   top: 20px;
   right: 20px;
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.7);
 }
 .home .section2 .thumbnail .like img {
@@ -178,6 +179,9 @@ Home
   }
   .home .section1 .gridcontent img {
     height: 200px;
+  }
+  .home .section2 .thumbnail {
+    width: 265px;
   }
   .home .section2 .thumbnail img {
     height: 200px;
@@ -255,7 +259,6 @@ Page1
   height: 225px;
   margin: 0 auto;
   border-radius: 5px;
-  margin: 10px;
 }
 .page1 .section1 .grid {
   display: grid;
@@ -273,6 +276,7 @@ Page1
 }
 .page1 .section1 .grid .card .thumb .like {
   position: absolute;
+  cursor: pointer;
   top: 15px;
   right: 15px;
   height: 20px;
@@ -318,7 +322,7 @@ Page1
 @media screen and (max-width: 1150px) {
   .page1 .section1 .grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   .row {
@@ -328,10 +332,9 @@ Page1
   .page1 .section1 .grid .card {
     width: 300px;
     background-color: rgb(240, 237, 237);
-    height: 400px;
+    height: 420px;
     margin: 0 auto;
     border-radius: 5px;
-    margin: 10px;
   }
   .page1 .section1 .grid .card .thumbnail {
     width: 280px;
