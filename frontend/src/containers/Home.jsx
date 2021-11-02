@@ -1,64 +1,62 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPlaces } from "../reducks/places/operations";
-import { getPlaces } from "../reducks/places/selectors";
-import Header from "../components/Posts/Common/Header";
-import Footer from "../components/Posts/Common/Footer";
-import Search from "../components/Posts/Common/Search";
-import Background from "../assets/img/background.png";
-import CategoryCard from "../components/Posts/Common/CategoryCard";
-import PlaceCard from "../components/Posts/Common/PlaceCard";
-import { getCategories } from "../reducks/categories/selectors";
-import { fetchCategories } from "../reducks/categories/operations";
-import { fetchFromLocalStorage } from "../reducks/favourites/operations";
-
+import React,{useEffect} from 'react'
+import Footer from '../components/common/Footer'
+import GridContent from '../components/common/GridContent'
+import Header from '../components/common/Header'
+import Search from '../components/common/Search'
+import Thumbnail from '../components/common/Thumbnail'
+import Imgbackground from '../assets/img/Background.png'
+import ImgEVGAlogo from '../assets/img/EVGA-logo.png'
+import ImgSearchicon from '../assets/img/searchicon.png'
+import { getPlaces } from '../reducks/places/selectors'
+import {getCategories} from '../reducks/categories/selectors'
+import { fetchPlaces } from '../reducks/places/operations'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchCategories } from '../reducks/categories/operations'
+import { fetchFromLocalStorage } from '../reducks/favourites/operations'
 const Home = () => {
   const dispatch = useDispatch();
-  const selector = useSelector((state) => state);
+  const selector = useSelector(state => state);
   const places = getPlaces(selector);
+  useEffect(() => {
+    dispatch(fetchPlaces())
+  }, []);
+  const categories = getCategories(selector)
   console.log(places);
   useEffect(() => {
-    dispatch(fetchPlaces());
+   dispatch(fetchCategories());
+   dispatch(fetchFromLocalStorage());
   }, []);
-  const categories = getCategories(selector);
 
-  useEffect(() => {
-    dispatch(fetchCategories());
-    dispatch(fetchFromLocalStorage());
-  }, []);
+  // console.log(categories);
 
   return (
     <>
-      <Header />
-      <div class="home">
-        <div class="background-image">
-          <img src={Background} alt="" />
-        </div>
-
-        <Search />
-
-        <section class="section1">
-          <div class="heading1">Popular things to do in Ethiopia</div>
-          <div class="grid">
-            {categories.map((caterory) => (
-              <CategoryCard category={caterory} />
-            ))}
-          </div>
-          <div class="heading1">Tourist Attraction in Ethiopia</div>
-        </section>
-        <section class="section2">
-          <div class="galary">
-            <div class="row">
-              {places.map((place) => (
-                <PlaceCard place={place} />
+       <Header img={ImgEVGAlogo}/>
+       <section className="section1">   
+           <div className="background">
+              <img src={Imgbackground} alt="" />
+           </div>
+           <Search img={ImgSearchicon}/>
+           <div className="heading1">
+               Popular things to do in Ethiopia
+           </div>
+          <div className="grid">
+          {categories.map((category) => (
+                <GridContent key={category.id} category={category} />
               ))}
-            </div>
           </div>
+          <div class="heading1">Tourist Attractions Places in Ethiopia</div>
+                <div class="gallery">
+                    <div class="row">
+                    {places.map((place) => (
+                <Thumbnail place={place} />
+              ))}
+                    </div>
+                 </div>
         </section>
-      </div>
-      <Footer />
+        <Footer img={ImgEVGAlogo}/>
     </>
-  );
-};
+  )
+}
 
 export default Home;

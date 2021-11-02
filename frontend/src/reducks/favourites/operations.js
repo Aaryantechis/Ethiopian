@@ -4,10 +4,9 @@ import {
   fetchFavouritesAction,
   deleteFavouritesAction,
 } from "./actions";
-
 const api = new API();
-const FAVOURITES_KEY = "FAVOURITES_KEY";
 
+const FAVOURITES_KEY = "FAVOURITES_KEY";
 export const fetchFromLocalStorage = () => {
   return async (dispatch) => {
     let favouritsJSON = localStorage.getItem(FAVOURITES_KEY);
@@ -18,7 +17,6 @@ export const fetchFromLocalStorage = () => {
     dispatch(fetchFavouritesAction(favourites));
   };
 };
-
 export const addFavourite = (place) => {
   return async (dispatch, getState) => {
     let prevFavourites = getState().favourites.list;
@@ -27,16 +25,14 @@ export const addFavourite = (place) => {
     dispatch(addFavouritesAction(nextFavorites));
   };
 };
-
 export const deleteFavourite = (id) => {
   return async (dispatch, getState) => {
     let prevFavourites = getState().favourites.list;
-    const nextFavourites = prevFavourites.filter((image) => image.id != id);
+    const nextFavourites = prevFavourites.filter((image) => image.id !== id);
     setToLocalStorage(nextFavourites);
     dispatch(deleteFavouritesAction(nextFavourites));
   };
 };
-
-const setToLocalStorage = (favourites) => {
+export const setToLocalStorage = (favourites) => {
   localStorage.setItem(FAVOURITES_KEY, JSON.stringify(favourites));
 };

@@ -1,36 +1,42 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Search from "../components/Posts/Common/Search";
-import Header from "../components/Posts/Common/Header";
-import Footer from "../components/Posts/Common/Footer";
-import { getFavourites } from "../reducks/favourites/selectors";
-import { fetchFromLocalStorage } from "../reducks/favourites/operations";
-import FavCard from "../components/Posts/Common/FavCard";
+import React from 'react'
+import FavCard from '../components/common/FavCard'
+import Footer from '../components/common/Footer'
+import Header from '../components/common/Header'
+import Search from '../components/common/Search'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { getFavourites } from '../reducks/favourites/selectors'
+import { useEffect } from 'react'
+import { fetchFromLocalStorage } from '../reducks/favourites/operations'
+
 const Favourites = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const favourites = getFavourites(selector);
   console.log(favourites);
   useEffect(() => {
     dispatch(fetchFromLocalStorage());
   }, []);
-  return (
-    <>
-      <Header />
-      <div class="page1">
-        <Search />
-        <div class="section1">
-          <h1 class="heading1">Day trips in Ethiopia</h1>
-          <div class="grid">
-            {favourites.map((favourite) => (
-              <FavCard favourite={favourite} />
-            ))}
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-};
 
-export default Favourites;
+    return (
+        <>
+        <Header/>
+    <section class="section2">
+        <div class="gallery">
+            <Search/>
+         </div>
+          <div class="heading1">
+            Favourites in Ethiopia
+         </div>
+        <div class="grid">
+           {favourites.map((favourite) =>(
+               <FavCard favourite={favourite}/>
+           ))} 
+       </div>  
+    </section>
+    <Footer/>
+        </>
+    )
+}
+
+export default Favourites

@@ -1,5 +1,5 @@
 import API from "../../API";
-import { fetchPlacesAction } from "./actions";
+import { fetchPlacesAction} from "./actions";
 
 const api = new API();
 
@@ -11,7 +11,7 @@ export const fetchPlaces = (search, category) => {
         dispatch(fetchPlacesAction(places));
       })
       .catch((error) => {
-        alert("Failed to connect API: /posts/");
+        alert("Failed to connect API: /places/");
       });
   };
 };

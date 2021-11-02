@@ -1,51 +1,39 @@
-# Forum App in React & Redux + Django
+## Ethiopian-Visitors-Guide
 
-```
-Forum App, with a frontend built in React & Redux and a backend built in Django API.
-```
+# This is a Self Development Project
 
-## Live Demo
+This portfolio is my Fisrt website made by using html / css /react / redux / django .
+I will be using this to show case my project!
 
-**This App uses a Heroku free plan, so I am afraid that it takes time to load the pages.**
+https://ethiopianvisitorsfrontend.herokuapp.com/
 
-Check out [FRONTEND LIVE DEMO](https://forum-prod-frontend.herokuapp.com/) here!!
 
-Check out [API LIVE DEMO](https://forum-prod-api.herokuapp.com/) here!!
+**Technologies used:
 
-## Tech used
+  - HTML,
 
-```
-* Frontend : React & Redux
-* Backend : Django
-```
+  - CSS,
+   
+  - React, 
+  
+  - Redux and 
 
-## How to Install
+  - Django Api
 
-1. Git Clone
+**Installation
 
-```
-git clone git@github.com:Tech-i-s/techis-wd-forum-django-react.git
-```
+ - No need to Install any software, It is just simple ,open up index.html.
 
-2. Backend setting
+**What is the Importance of this ?
 
-```
-cd backend
-Python -m venv env
-(For Mac) source env/bin/activate
-(For Windows) env/Scripts\activate
-pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
-# Open http://127.0.0.1:8000/posts/
-```
+  - Use this template to build your own project.
 
-3. Frontend setting
+**What is the content of this portfolio?
 
-```
-cd frontend
-npm install
-npm start
-# Open http://127.0.0.1:3000/
-```
+ - Open up and check it out line number 5 of this README part.
+
+
+![image](https://user-images.githubusercontent.com/78699309/137190254-66a0085c-5348-4aff-8915-6d8f9572931b.png)
+
+
+
